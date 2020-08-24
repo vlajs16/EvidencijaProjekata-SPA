@@ -1,0 +1,56 @@
+.back{
+    min-height: 100vh;
+    width: 100%;
+    background: rgb(0,43,81);
+    /* background: linear-gradient(180deg, rgba(0,43,81,1) 0%, rgba(0,75,125,1) 100%), */
+    background-image: url('../../assets/images/logo-back.png'), 
+        linear-gradient(180deg, rgba(0,43,81,1) 0%, rgba(0,75,125,1) 100%);
+    background-size: 100px;
+    display: block;
+    position: absolute;
+}
+
+.main{
+    min-height: 100vh;
+    /* background: rgb(0,43,81); */
+    min-width: 80vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.column{
+    width: 45%!important;
+}
+
+.column h1{
+    font-size: 2.1rem;
+    margin-top: 30px;
+    padding: 10px 0;
+    background: rgb(0,43,81);
+    text-align: center;
+    -webkit-box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    -moz-box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    color: #21bced;
+}
+
+
+.numbers{
+    width: 100%;
+    color: #21bced;
+    background: rgb(0,43,81);
+    text-align: center;
+    -webkit-box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    -moz-box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    min-height: 60vh;
+    margin-top: 50px;
+}
+
+.number{
+    width: 100%;
+    height: 100%;
+    font-size: 8em;
+    color: #21bced;
+    padding-top: 19%;
+}

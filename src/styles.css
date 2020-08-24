@@ -1,1 +1,88 @@
-/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import '../node_modules/alertifyjs/build/css/alertify.min.css';
+@import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
+
+html,
+body,
+app-component{
+    min-height: 100vh!important;
+    width: 100%!important;
+    margin: 0;
+}
+
+*{
+    font-family: 'Raleway', sans-serif;
+}
+
+.loged{
+    display: flex;
+    justify-content: space-between;
+    background-image: url('assets/images/logo-back.png'), 
+        linear-gradient(180deg, rgba(0,43,81,1) 0%, rgba(0,75,125,1) 100%);
+    background-size: 100px;
+}
+
+input:focus,
+input:active,
+input:target{
+    outline: unset;
+}
+
+.bs-datepicker{
+    border-radius: 0 0 15px 15px;
+}
+
+.bs-datepicker-head,
+.bs-datepicker-body span.selected{
+    background-color: #21bced!important;
+}
+
+.theme-blue .bs-datepicker-body table td.week span{
+    color: #21bced!important;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* --- MODAL NEW MENTOR --- */
+
+.modal-content{
+    border-radius: 15px;
+    background: rgba(0,75,125,1);
+    background-image: linear-gradient(0deg, rgba(0,43,81,1) 0%, rgba(0,75,125,1) 100%)!important;
+    color: #fcfdfd;
+}
+
+.modal-header,
+.modal-body{
+    background: transparent!important;
+}
+
+.modal-header{
+    border-bottom: 2px dotted #dee2e6;
+}
+
+.close span{
+    font-size: 1.3em;
+    text-shadow: none;
+    color: white;
+}
+
+button.close{
+    outline: none!important;
+}
+
+@media (min-width: 576px){
+    .modal-dialog{
+        max-width: 700px!important;
+    }
+}
+
+.tooltip-inner{
+    min-width: 600px;
+}

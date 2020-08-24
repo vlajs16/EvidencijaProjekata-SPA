@@ -1,0 +1,125 @@
+<div class="main">
+  <h1>Предложени пројекти</h1>
+  <div class="wrap">
+    <div class="column list">
+      <h2>
+          Листа предлога
+      </h2>
+      <div class="numbers">
+        <ul class="list-group">
+          <li class="list-group-item" 
+              *ngFor="let prop of proposals"
+              (click)="setSelectedProposal(prop.projectProposalID)"
+              [ngClass]="{'selected': selectedProposal != null && selectedProposal.projectProposalID == prop.projectProposalID}">
+              {{prop.name}}
+            </li>
+        </ul>
+      </div>
+    </div>
+    <div class="column not-list">
+        <h2>
+          {{selectedProposal == null ? "Одабрани предлог" : "Одабрани предлог: " + selectedProposal.name}}
+        </h2>
+        <div class="numbers">
+            <p class="detail">
+              <span class="title">Датум предлагања пројекта:</span> 
+              <span class="text">{{selectedProposal?.proposalDate | date:'dd.MM.yyyy'}}</span>
+            </p>
+            <p class="detail">
+              <span class="title">Компанија:</span> 
+              <span class="text">{{selectedProposal?.company.name}}</span>
+            </p>
+            <p class="detail">
+              <span class="title">Циљ пројекта:</span> 
+              <span class="text">{{selectedProposal?.goal}}</span>
+            </p>
+            <p class="detail">
+              <span class="title">Опис пројекта:</span> 
+              <span class="text">{{selectedProposal?.description}}</span>
+            </p>
+            <p class="detail">
+              <span class="title">Активности на пројекту:</span> 
+              <span class="text">{{selectedProposal?.activities}}</span>
+            </p>
+            <p class="detail">
+              <span class="title">Предлог датума почетка:</span> 
+              <span class="text">{{selectedProposal?.startDateProjectProposal | date:'dd.MM.yyyy'}}</span>
+            </p>
+            <p class="detail">
+              <span class="title">Трајање пројекта у данима:</span> 
+              <span class="text">{{selectedProposal?.daysDuration}}</span>
+            </p>
+            
+            <p class="detail">
+              <span class="title">Екстерни ментор компаније:</span> 
+              <span class="text">{{selectedProposal == null ? '' : selectedProposal?.externalMentor?.name + " " + selectedProposal?.externalMentor?.surname}}</span>
+            </p>
+
+            <p class="detail">
+              <span class="title">Теме покрића:</span>
+              <span class="text">
+                <ul class="list">
+                  <li class="covering-subject" *ngFor="let subj of selectedProposal?.subjects" [tooltip]="try">{{subj?.name}}
+                    <ng-template #try>
+                      <div class="tool">
+                        <p class="detail">
+                          <span class="title">Опис теме:</span>
+                          <span class="text">{{subj?.description}}</span>
+                        </p>
+                        <p class="detail">
+                          <span class="title">Научна област:</span>
+                          <span class="text">{{subj?.scientificArea.name}}</span>
+                        </p>
+                      </div>
+                    </ng-template>
+                  </li>
+                </ul>
+              </span>
+            </p>
+        </div>
+    </div>
+  </div>
+  <div class="approving">
+    <h2>
+      Одобравање пројекта
+    </h2>
+
+    <form [formGroup]="projectForm" (submit)="approveProject()" class="project-form">
+      <div class="form-ever">
+        <div class="form-group">
+          <label for="description">Унесите опис одобрења:</label>
+          <textarea type="text"
+                 class="input form-control"
+                 [ngClass]="{'is-invalid': projectForm.get('description').errors 
+                              && projectForm.get('description').touched}"
+                 formControlName="description"
+                 placeholder="Опис одобрења"></textarea>
+          <div class="invalid-feedback">Морате унети опис</div>
+        </div>
+        <div class="form-group">
+          <label for="note">Унесите напомену (опционо):</label>
+          <textarea type="text"
+                 class="input form-control"
+                 formControlName="note"
+                 placeholder="Лозинка"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="internalMentor">Одаберите интерног ментора пројекта:</label>
+          <select name="internalMentor" formControlName="internalMentor"
+                  class="input form-control">
+              <option *ngFor="let mentor of mentors" value="{{mentor.employeeID}}">{{mentor.name + ' ' + mentor.surname}}</option>
+          </select>
+        </div>
+        <div class="buttons">
+          <div class="form-group text-center">
+            <button class="btn" type="submit" [disabled]="!projectForm.valid">Oдобри пројекат</button>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn" type="button" (click)="cancelApproval()">Oдустани</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,161 @@
+/* .modal-dialog{
+    border-radius: 15px;
+    background: linear-gradient(0deg, rgba(0,43,81,1) 0%, rgba(0,75,125,1) 100%)!important;
+    color: #fcfdfd;
+}
+
+.modal-header,
+.modal-body{
+    background: transparent!important;
+}
+
+.modal-header{
+    border-bottom: 2px dotted #dee2e6;
+}
+
+.close span{
+    font-size: 1.3em;
+    text-shadow: none;
+    color: white;
+} */
+
+
+
+
+.label{
+    margin-left: 14px;
+    color: #fcfdfd;
+    font-weight: 200;
+    margin-bottom: 3px;
+}
+
+.input:first-child{
+    margin-top: 30px;
+}
+
+.input, 
+.btn{
+    margin: 0 auto;
+    width: 95%;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.input{
+    background: transparent;
+    border: 1px solid #21bced;
+    transition: all ease-in-out .4s;
+    color: #21bced;
+    font-weight: 400;
+}
+
+.input:focus{
+    color: #fcfdfd;
+}
+
+.input::placeholder{
+    color: #21bced;
+}
+
+.btn{
+    margin-top:35px!important;
+    color: #002b51;
+    background-color: #21bced;
+    border: 1px solid #21bced;
+    transition: all ease-in-out .4s;
+    font-weight: 600;
+}
+
+.btn:hover{
+    color: #21bced;
+    background-color: transparent;
+}
+
+.is-invalid,
+.is-invalid:focus{
+    border-color: #cf5c36;
+    color: #cf5c36;
+}
+
+.is-invalid::placeholder{
+    color: #cf5c36;
+
+}
+
+.invalid-feedback{
+    text-align: center;
+    margin-top: 8px;
+    color: #cf5c36;
+}
+
+.btn:disabled,
+.btn:hover:disabled{
+    opacity: 0.5;
+    color: #002b51;
+    background-color: #21bced;
+}
+
+.contact-value{
+    display: flex;
+    border-bottom: solid 1px #21bced;
+}
+
+.contact-value .img{
+    height: 35px;
+    width: auto;
+}
+
+.contact-value input{
+    border: none;
+    width: 70%;
+}
+
+.contact-value .delete{
+    height: 26px;
+    width: auto;
+    transition: all ease-in-out .4s;
+}
+
+.contact-value .delete:hover{
+    transform: rotate(-20deg);
+}
+
+.invalid .add-contact .btn{
+    background: #cf5c36;
+    border: 1px solid #cf5c36;
+    transition: ease-in-out .4s all;
+}
+
+.invalid .add-contact .btn:hover{
+    background: #dd8c72;
+    color: #002b51;
+}
+
+@media (min-width: 576px){
+    .modal-dialog{
+        max-width: 700px!important;
+    }
+}
+
+@media(min-width: 720px){
+    form{
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .add-contact{
+        display: flex;
+    }
+
+    .element{
+        width: 60%;
+    }
+
+    .add-contact .btn{
+        width: 30%;
+        margin-top: 0!important;
+        height: 40px;
+    }
+
+}

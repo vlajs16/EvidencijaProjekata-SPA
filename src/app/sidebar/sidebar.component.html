@@ -1,0 +1,13 @@
+<nav id="sidebarMenu" class="sidebar">
+    <img src="../../assets/images/logo-transp.png" alt="IRC" class="img" [routerLink]="['/dashboard']">
+    <p class="user">{{currentUser.name + ' ' + currentUser.surname}}</p>
+    <ul class="nav flex-column">
+      <li class="nav-item" [routerLink]="['/notapproved']">
+        <a class="nav-link" > Предложени пројекти </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Одобрени пројекти</a>
+      </li>
+    </ul>
+    <button class="btn" (click)="logout()">Одјави се</button>
+</nav>

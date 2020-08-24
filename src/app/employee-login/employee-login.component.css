@@ -1,0 +1,159 @@
+.back{
+    min-height: 100vh;
+    width: 100%;
+    background: rgb(0,43,81);
+    /* background: linear-gradient(180deg, rgba(0,43,81,1) 0%, rgba(0,75,125,1) 100%), */
+    background-image: url('../../assets/images/logo-back.png'), 
+        linear-gradient(180deg, rgba(0,43,81,1) 0%, rgba(0,75,125,1) 100%);
+    background-size: 100px;
+    display: block;
+    position: absolute;
+}
+
+.forma{
+    margin: 0 auto;
+    margin-top: 18%;
+    width: 95%;
+    min-height: 80vh;
+    height: 80vh;
+    background: linear-gradient(0deg, rgba(0,43,81,1) 0%, rgba(0,75,125,1) 100%);
+    border-radius: 30px;
+    -webkit-box-shadow: 4px 6px 22px -4px rgba(0,0,0,0.48);
+    -moz-box-shadow: 4px 6px 22px -4px rgba(0,0,0,0.48);
+    box-shadow: 4px 6px 22px -4px rgba(0,0,0,0.48);
+}
+
+.img{
+    width: 20%;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 20px;
+    display: block;
+}
+
+form{
+    margin-top: 70px;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+.input:first-child{
+    margin-top: 30px;
+}
+
+.input, 
+.btn{
+    margin: 0 auto;
+    width: 95%;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.input{
+    background: transparent;
+    border: 1px solid #21bced;
+    transition: all ease-in-out .4s;
+    color: #21bced;
+}
+
+.input:focus{
+    color: #fcfdfd;
+}
+
+.input::placeholder{
+    color: #21bced;
+}
+
+.btn{
+    margin-top:35px!important;
+    color: #002b51;
+    background-color: #21bced;
+    border: 1px solid #21bced;
+    transition: all ease-in-out .4s;
+    font-weight: 600;
+}
+
+.btn:hover{
+    color: #21bced;
+    background-color: transparent;
+}
+
+.is-invalid,
+.is-invalid:focus{
+    border-color: #cf5c36;
+    color: #cf5c36;
+}
+
+.invalid-feedback{
+    text-align: center;
+    margin-top: 8px;
+    color: #cf5c36;
+}
+
+.btn:disabled,
+.btn:hover:disabled{
+    opacity: 0.5;
+    color: #002b51;
+    background-color: #21bced;
+}
+
+.autor{
+    text-align: end;
+    padding-right: 25px;
+    font-size: 1.2em;
+    font-weight: 600;
+    padding-top: 5px;
+    color: white;
+    opacity: .6
+}
+
+@media(min-width: 720px){
+    .forma{
+        margin-top:4%;
+        width: 48%;
+    }
+
+    form{
+        margin-top: 90px;
+    }
+
+    .img{
+        width: 15%;
+        padding-top: 18px;
+    }
+
+    .input{
+        width: 80%;
+    }
+
+    .btn{
+        width: 50%;
+    }
+}
+
+@media(min-width: 1150px){
+    .forma{
+        margin-top:4%;
+        width: 30%;
+    }
+
+    form{
+        margin-top: 90px;
+    }
+
+    .img{
+        width: 15%;
+        padding-top: 18px;
+    }
+
+    .input{
+        width: 80%;
+    }
+
+    .btn{
+        width: 50%;
+    }
+}

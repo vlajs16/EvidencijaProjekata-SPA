@@ -1,0 +1,79 @@
+<p>
+  new-mentor-modal works!
+</p>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Додајте новог ментора</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]= "mentorForm" (submit)="insertMentor()">
+      <div class="form-group">
+        <label for="name" class="label">Име</label>
+        <input type="text" 
+               class="input form-control"
+               formControlName="name"
+               name="name"
+               [ngClass]="{'is-invalid': mentorForm.get('name').errors
+                          && mentorForm.get('name').touched}"
+               placeholder="Име ментора">
+        <div class="invalid-feedback">Морате унети име</div>
+      </div>
+
+      <div class="form-group">
+        <label for="surname" class="label">Презиме</label>
+        <input type="text" 
+               class="input form-control"
+               formControlName="surname"
+               name="surname"
+               [ngClass]="{'is-invalid': mentorForm.get('surname').errors
+                          && mentorForm.get('surname').touched}"
+               placeholder="Презиме ментора">
+        <div class="invalid-feedback">Морате унети презиме</div>
+      </div>
+
+      <div class="contacts" 
+      [ngClass]="{'invalid': mentorForm.get('contacts').hasError('invalidSize')}">
+        <h4>Контакт ментора: </h4>
+        <div class="add-contact">
+          <div class="form-group element">
+            <select name="contactType1" id="contactType" class="form-control" formControlName="contactType1">
+              <option value="Telephone">Телефон</option>
+              <option value="Email">Имејл</option>
+              <option value="LinkedIn">Линкдин</option>
+            </select>
+          </div>
+          <button class="btn" type="button" (click)="addNewContact()">Додај</button>
+        </div>
+
+        <div class="array" formArrayName="contacts">
+          <div class="cont"  *ngFor="let contact of contacts.controls; index as i">
+            <div class="form-group" [formGroupName]="i">
+              <div class="contact-value">
+                <img src="../../assets/images/icons/{{contact.get('contactType').value}}.png" alt="{{contact.get('contactType').value}}" class="img">
+                <input type="text" 
+                     class="input form-control"
+                     formControlName="value"
+                     name="value"
+                     [ngClass]="{'is-invalid': contact.get('value').errors
+                                && contact.get('value').touched}"
+                     placeholder="{{contact.get('contactType').value}}">
+                <img src="../../assets/images/icons/delete.png" alt="delete" (click)="deleteContact(i)" class="img delete">
+
+              </div>
+              <div class="invalid-feedback">Морате унети вредност</div>
+            </div>
+
+        </div>
+        </div>
+      </div>
+
+      <div class="form-group text-center">
+        <button class="btn" type="submit" [disabled]="!mentorForm.valid">Додај ментора</button>
+      </div>
+
+    </form>
+  </div>
+</ng-template>
