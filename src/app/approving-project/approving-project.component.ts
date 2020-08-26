@@ -7,12 +7,45 @@ import { Project } from '../_models/project';
 import { Employee } from '../_models/employee';
 import { AlertifyService } from '../_services/alertify.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { EmployeeAuthService } from '../_services/employee-auth.service';
 
 @Component({
   selector: 'app-approving-project',
   templateUrl: './approving-project.component.html',
-  styleUrls: ['./approving-project.component.css']
+  styleUrls: ['./approving-project.component.css'],
+  animations: [
+    trigger('forEditing', [
+      state('not-edit', style({
+          // display: 'none',
+          opacity: 0
+      })),
+      state('edit', style({
+        // display: 'block',
+        opacity: 1
+      })),
+      transition('not-edit => edit', [
+        animate('400ms')
+      ]),
+      transition('edit => not-edit', [
+        animate('400ms')
+      ])
+    ]),
+    trigger('displaying', [
+      state('not-edit', style({
+        display: 'none'
+      })),
+      state('edit', style({
+        display: 'block'
+      })),
+      transition('not-edit => edit', [
+        animate('50ms')
+      ]),
+      transition('edit => not-edit', [
+        animate('450ms')
+      ])
+    ])
+  ]
 })
 export class ApprovingProjectComponent implements OnInit {
   proposals: ProjectProposal[];
@@ -21,7 +54,8 @@ export class ApprovingProjectComponent implements OnInit {
   mentors: Employee[];
   projectForm: FormGroup;
 
-  constructor(private proposalService: ProposeProjectService,
+  constructor(
+    private proposalService: ProposeProjectService,
     private projectService: ProjectService,
     private route: ActivatedRoute,
     private alertify: AlertifyService,

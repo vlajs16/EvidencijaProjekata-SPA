@@ -21,4 +21,20 @@ export class ProjectService {
     return this.http.post(this.baseUrl, project);
   }
 
+  delete(id: number){
+    return this.http.delete(this.baseUrl + id);
+  }
+
+  update(project: Project){
+    return this.http.put(this.baseUrl + project.projectID, project);
+  }
+
+  getById(id: number): Observable<Project>{
+    return this.http.get<Project>(this.baseUrl + id);
+  }
+
+  getAll(): Observable<Project[]>{
+    return this.http.get<Project[]>(this.baseUrl);
+  }
+
 }

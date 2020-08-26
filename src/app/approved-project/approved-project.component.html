@@ -1,65 +1,68 @@
 <div class="main">
-  <h1>Предложени пројекти</h1>
+  <h1>Одбрени пројекти</h1>
   <div class="wrap">
     <div class="column list">
       <h2>
-          Листа предлога
+          Листа пројеката
       </h2>
       <div class="numbers">
         <ul class="list-group">
           <li class="list-group-item" 
-              *ngFor="let prop of proposals"
-              (click)="setSelectedProposal(prop.projectProposalID)"
-              [ngClass]="{'selected': selectedProposal != null && selectedProposal.projectProposalID == prop.projectProposalID}">
-              {{prop.name}}
+              *ngFor="let pro of projects; let indexOfElement = index"
+              [ngClass]="{'selected': selectedProject != null && selectedProject.projectID == pro.projectID}">
+              {{pro.projectProposal.name}} 
+              <div class="btns">
+                <img src="../../assets/images/icons/edit.png" alt="edit" class="img-btn edit" (click)="setToEdit(pro.projectID)">
+                <img src="../../assets/images/icons/delete.png" alt="delete" class="img-btn delete" (click)="deleteProject(indexOfElement)">
+              </div>
             </li>
         </ul>
       </div>
     </div>
     <div class="column not-list">
         <h2>
-          {{selectedProposal == null ? "Одабрани предлог" : "Одабрани предлог: " + selectedProposal.name}}
+          {{selectedProject == null ? "Одабрани пројекат" : "Одабрани пројекат: " + selectedProject.projectProposal.name}}
         </h2>
         <div class="numbers">
             <p class="detail">
               <span class="title">Датум предлагања пројекта:</span> 
-              <span class="text">{{selectedProposal?.proposalDate | date:'dd.MM.yyyy'}}</span>
+              <span class="text">{{selectedProject?.projectProposal?.proposalDate | date:'dd.MM.yyyy'}}</span>
             </p>
             <p class="detail">
               <span class="title">Компанија:</span> 
-              <span class="text">{{selectedProposal?.company.name}}</span>
+              <span class="text">{{selectedProject?.projectProposal?.company.name}}</span>
             </p>
             <p class="detail">
               <span class="title">Циљ пројекта:</span> 
-              <span class="text">{{selectedProposal?.goal}}</span>
+              <span class="text">{{selectedProject?.projectProposal?.goal}}</span>
             </p>
             <p class="detail">
               <span class="title">Опис пројекта:</span> 
-              <span class="text">{{selectedProposal?.description}}</span>
+              <span class="text">{{selectedProject?.projectProposal?.description}}</span>
             </p>
             <p class="detail">
               <span class="title">Активности на пројекту:</span> 
-              <span class="text">{{selectedProposal?.activities}}</span>
+              <span class="text">{{selectedProject?.projectProposal?.activities}}</span>
             </p>
             <p class="detail">
               <span class="title">Предлог датума почетка:</span> 
-              <span class="text">{{selectedProposal?.startDateProjectProposal | date:'dd.MM.yyyy'}}</span>
+              <span class="text">{{selectedProject?.projectProposal?.startDateProjectProposal | date:'dd.MM.yyyy'}}</span>
             </p>
             <p class="detail">
               <span class="title">Трајање пројекта у данима:</span> 
-              <span class="text">{{selectedProposal?.daysDuration}}</span>
+              <span class="text">{{selectedProject?.projectProposal?.daysDuration}}</span>
             </p>
             
             <p class="detail">
               <span class="title">Екстерни ментор компаније:</span> 
-              <span class="text">{{selectedProposal == null ? '' : selectedProposal?.externalMentor?.name + " " + selectedProposal?.externalMentor?.surname}}</span>
+              <span class="text">{{selectedProject == null ? '' : selectedProject.projectProposal?.externalMentor?.name + " " + selectedProject.projectProposal?.externalMentor?.surname}}</span>
             </p>
 
             <p class="detail">
               <span class="title">Теме покрића:</span>
               <span class="text">
                 <ul class="list">
-                  <li class="covering-subject" *ngFor="let subj of selectedProposal?.subjects" [tooltip]="try">{{subj?.name}}
+                  <li class="covering-subject" *ngFor="let subj of selectedProject?.projectProposal?.subjects" [tooltip]="try">{{subj?.name}}
                     <ng-template #try>
                       <div class="tool">
                         <p class="detail">
@@ -68,7 +71,7 @@
                         </p>
                         <p class="detail">
                           <span class="title">Научна област:</span>
-                          <span class="text">{{subj?.scientificArea.name}}</span>
+                          <span class="text">{{subj?.scientificArea?.name}}</span>
                         </p>
                       </div>
                     </ng-template>
@@ -79,13 +82,13 @@
         </div>
     </div>
   </div>
-  <div class="approving" [@forEditing] = "selectedProposal == null ? 'not-edit' : 'edit'"
-                         [@displaying] = "selectedProposal == null ? 'not-edit' : 'edit'">
+  <div class="approving" [@forEditing] = "selectedProject == null ? 'not-edit' : 'edit'"
+                         [@displaying] = "selectedProject == null ? 'not-edit' : 'edit'">
     <h2>
-      Одобравање пројекта
+      Измена пројекта
     </h2>
 
-    <form [formGroup]="projectForm" (submit)="approveProject()" class="project-form">
+    <form [formGroup]="projectForm" (submit)="updateProject()" class="project-form">
       <div class="form-ever">
         <div class="form-group">
           <label for="description">Унесите опис одобрења:</label>
@@ -113,10 +116,10 @@
         </div>
         <div class="buttons">
           <div class="form-group text-center">
-            <button class="btn" type="submit" [disabled]="!projectForm.valid">Oдобри пројекат</button>
+            <button class="btn" type="submit" [disabled]="!projectForm.valid || !projectForm.dirty">Измени пројекат</button>
           </div>
           <div class="form-group text-center">
-            <button class="btn" type="button" (click)="cancelApproval()">Oдустани</button>
+            <button class="btn" type="button" (click)="cancelEdit()">Oдустани од измене</button>
           </div>
         </div>
       </div>

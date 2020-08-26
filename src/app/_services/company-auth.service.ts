@@ -34,7 +34,7 @@ login(company: any){
 
 loggedIn(){
   const token = localStorage.getItem('token');
-  return !this.jwtHelper.isTokenExpired(token); // vraca true ako token nije expired
+  return !this.jwtHelper.isTokenExpired(token) && this.jwtHelper.decodeToken(token).actort == 'company'; // vraca true ako token nije expired
 }
 
 }

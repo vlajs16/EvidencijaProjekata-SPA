@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@ang
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CompanyAuthService } from '../_services/company-auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ExternalMentorContact } from '../_models/external-mentor-contact';
 import { ExternalMentorService } from '../_services/external-mentor.service';
 import { AlertifyService } from '../_services/alertify.service';
@@ -62,7 +62,7 @@ export class ProjectProposalComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private companyAuth: CompanyAuthService, private route: ActivatedRoute,
     private mentorService: ExternalMentorService, private alertify: AlertifyService, private modalService: BsModalService,
-    private projectService: ProposeProjectService) { }
+    private projectService: ProposeProjectService, private router: Router) { }
 
   ngOnInit() {
     var date  = new Date();
@@ -181,7 +181,7 @@ export class ProjectProposalComponent implements OnInit {
   deleteContact(index: number){
     const contact = this.selectedMentor.contacts[index];
     this.mentorService.deleteContact(this.selectedMentor.mentorID, contact.serialNumber).subscribe(next => {
-      this.selectedMentor.contacts.splice(index, index);
+      this.selectedMentor.contacts.splice(index, 1);
       this.alertify.success("Успешно сте обрисали контакт")
       // this.createEditContactSelected();
       this.createEditContactFormGroup();
@@ -274,4 +274,12 @@ export class ProjectProposalComponent implements OnInit {
     subjects.removeAt(index);
   }
 
+  logout(){
+    this.companyAuth.decodedToken = null;
+    this.companyAuth.currentCompany = null;
+    localStorage.removeItem('token');
+    localStorage.removeItem('company');
+    this.alertify.success('Успешно сте се одјавили!');
+    this.router.navigate(['/']);
+  }
 }

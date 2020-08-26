@@ -1,0 +1,231 @@
+.back{
+    min-height: 100vh;
+    width: 100%;
+    background: rgb(0,43,81);
+    /* background: linear-gradient(180deg, rgba(0,43,81,1) 0%, rgba(0,75,125,1) 100%), */
+    background-image: url('../../assets/images/logo-back.png'), 
+        linear-gradient(180deg, rgba(0,43,81,1) 0%, rgba(0,75,125,1) 100%);
+    background-size: 100px;
+    display: block;
+    position: absolute;
+}
+
+.main{
+    min-height: 100vh;
+    /* background: rgb(0,43,81); */
+    min-width: 80vw;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+}
+
+.wrap{
+    min-height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.column{
+    width: 45%;
+}
+
+.column h2,
+h1{
+    font-size: 2.1rem;
+    margin-top: 30px;
+    padding: 10px 0;
+    background: rgb(0,43,81);
+    text-align: center;
+    -webkit-box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    -moz-box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    color: #21bced;
+}
+
+.column h2{
+    font-size: 1.6rem;
+}
+
+.list{
+    width: 30%;
+}
+
+.not-list{
+    width: 65%;
+}
+
+
+.numbers{
+    width: 100%;
+    color: #21bced;
+    background: rgb(0,43,81);
+    text-align: center;
+    -webkit-box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    -moz-box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    min-height: 60vh;
+    height: 60vh;
+    overflow-x: hidden;
+    margin-top: 25px;
+}
+
+.number{
+    width: 100%;
+    height: 100%;
+    font-size: 8em;
+    color: #21bced;
+    padding-top: 19%;
+}
+
+.list-group{
+
+}
+
+.list-group-item{
+    background: transparent;
+    font-size: 1.3em;
+    border-bottom: .5px solid #21bced;
+    transition: all ease-in-out .4s;
+    cursor: pointer;
+}
+
+.list-group-item:hover,
+.list-group-item:active,
+.list-group-item:focus,
+.selected.list-group-item{
+    background: #21bced;
+    color: rgb(0,43,81);
+}
+
+
+p.detail{
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 20px;
+}
+
+p.detail:first-child{
+    padding-top: 15px;
+}
+
+.detail span.title{
+    width: 30%;
+    text-align: left;
+}
+
+.detail span.text{
+    width: 65%;
+    text-align: left;
+}
+ 
+.list{
+    padding-inline-start: 20px;
+}
+
+.covering-subject{
+    cursor: pointer;
+}
+
+.tool{
+    min-width: 550px;
+}
+
+.approving h2{
+    font-size: 1.9rem;
+    padding: 10px 0;
+    background: rgb(0,43,81);
+    text-align: center;
+    -webkit-box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    -moz-box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    color: #21bced;
+}
+
+.project-form{
+    padding: 10px 0;
+    background: rgb(0,43,81);
+    -webkit-box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    -moz-box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    box-shadow: 7px 2px 17px -2px rgba(0,0,0,0.44);
+    color: #21bced;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.project-form .form-ever{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.form-ever .label{
+    text-align: left;
+}
+
+.form-ever .input{
+    color: #21bced;
+    border: 1px solid #21bced;
+    background: transparent;
+    transition: ease-in-out all .4s;
+}
+
+.form-ever .input::placeholder{
+    color: #fcfdfd;
+    opacity: .6;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.btn{
+    font-weight: 500;
+    border: 1px solid #21bced;
+    background: #21bced;
+    color: rgb(0,43,81);
+    transition: all ease-in-out .4s;
+}
+
+.btn:hover,
+.btn:active{
+    background: transparent;
+    color: #21bced;
+}
+
+.btn.btn:disabled,
+.btn.btn:disabled:hover,
+.btn.btn:disabled:focus{
+    color: rgb(0,43,81);
+    background: #21bced;
+    opacity: .7;
+}
+
+.list-group-item{
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-btn{
+    height: 25px;    
+    width: auto;
+    transition: all ease-in-out .4s;
+}
+
+.edit{
+    margin-right: 10px;
+}
+
+.edit:hover{
+    transform: rotate(-20deg);
+}
+
+.delete:hover{
+    transform: rotate(20deg);
+}
+
+
+
+

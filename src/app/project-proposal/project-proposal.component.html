@@ -4,8 +4,10 @@
       <h1>Предложите свој пројекат</h1>
     </div>
 
-
-    <p class="user">Корисник: <span>{{company.name}}</span></p>
+    <div class="company">
+      <p class="user">Корисник: <span>{{company.name}}</span></p>
+      <p class="quit" (click)="logout()">Одјави се <i class="fa fa-sign-out"></i></p>
+    </div>
 
     <form [formGroup] = "projectForm" (submit)="proposeProject()">
       <div class="form-group">
@@ -121,10 +123,10 @@
                   <div class="form-group contact-form">
                     <input type="text" class="contact-input form-control" formControlName="contact{{indexOfelement}}" value="{{contact.value}}" 
                     (blur)="updateContact(indexOfelement)">
-                    <button class="btn-small edit" (click)="enableEditingContact(indexOfelement)">
+                    <button class="btn-small edit" (click)="enableEditingContact(indexOfelement)" type="button">
                       <img src="../../assets/images/icons/edit.png" >
                     </button>
-                    <button class="btn-small delete" (click)="deleteContact(indexOfelement)">
+                    <button class="btn-small delete" (click)="deleteContact(indexOfelement)" type="button">
                       <img src="../../assets/images/icons/delete.png" >
                     </button>
                   </div>
@@ -159,7 +161,7 @@
                     
                     <button class="btn-orange btn-contact btn-add" 
                             (click)="addNewContact()"
-                            [disabled]="!addContact || !addContactForm.valid">Додај</button>
+                            [disabled]="!addContact || !addContactForm.valid" type="button">Додај</button>
                   </div>
                   <div class="invalid-feedback">Морате унети контакт</div>
                 </div>

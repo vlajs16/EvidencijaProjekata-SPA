@@ -34,7 +34,7 @@ export class EmployeeAuthService {
 
   loggedIn(){
     const token = localStorage.getItem('token');
-    return !this.jwtHelper.isTokenExpired(token);
+    return !this.jwtHelper.isTokenExpired(token) && this.jwtHelper.decodeToken(token).actort != 'company';
   }
 
   getAll(): Observable<Employee[]>{

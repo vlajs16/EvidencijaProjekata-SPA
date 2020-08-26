@@ -48,12 +48,40 @@
     color:#fcfdfd ;
 }
 
-.user{
-    text-align: end;
-    margin-right: 8px;
+.company{
+    width: 100%;
     margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user,
+.quit .fa.fa-sign-out{
+    /* text-align: end; */
     color: #fcfdfd;
     font-weight: 200;
+}
+
+.user{
+    margin-left: 10px;
+}
+
+.quit{
+    color: #fcfdfd;
+    font-weight: 200;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.quit .fa.fa-sign-out{
+    font-size: 1.4em;
+    color: #21bced;
+    transition: ease-in-out all .4s;
+    margin-left: 5px;
+}
+
+.quit:hover .fa.fa-sign-out{
+    color: #fcfdfd;
 }
 
 .user span{

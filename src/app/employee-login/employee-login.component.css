@@ -31,6 +31,13 @@
     display: block;
 }
 
+.img,
+.img:focus,
+.img:active,
+.img:hover{
+    outline: none;
+}
+
 form{
     margin-top: 70px;
 }

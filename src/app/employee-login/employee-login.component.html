@@ -1,7 +1,7 @@
 <div class="back">
   <div class="forma">
     <p class="autor">Запослени</p>
-    <img src="../../assets/images/logo-transp.png" alt="IRC-FON" class="img">
+    <img src="../../assets/images/logo-transp.png" alt="IRC-FON" class="img" [routerLink]="['/']">
     <form [formGroup] = "loginForm" (submit)="login()">
       <div class="form-group">
         <input type="text"

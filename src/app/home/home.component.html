@@ -1,6 +1,6 @@
 <div class="back">
   <div class="forma">
-    <img src="../../assets/images/logo-transp.png" alt="IRC-FON" class="img">
+    <img src="../../assets/images/logo-transp.png" alt="IRC-FON" class="img" [routerLink]="['/employee']">
     <form [formGroup] = "loginForm" (submit)="login()">
       <div class="form-group">
         <input type="text"
