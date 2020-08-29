@@ -27,4 +27,16 @@ export class ProposeProjectService {
     return this.http.get<ProjectProposal>(this.baseUrl + id);
   }
 
+  getByCompany(): Observable<ProjectProposal[]>{
+    return this.http.get<ProjectProposal[]>(this.baseUrl + 'company/' + this.companyAuth.decodedToken.nameid);
+  }
+
+  update(projectProposal: ProjectProposal): Observable<ProjectProposal>{
+    return this.http.put<ProjectProposal>(this.baseUrl + this.companyAuth.decodedToken.nameid, projectProposal);
+  }
+
+  delete(id: number){
+    return this.http.delete(this.baseUrl + id + '/' +this.companyAuth.decodedToken.nameid);
+  }
+
 }

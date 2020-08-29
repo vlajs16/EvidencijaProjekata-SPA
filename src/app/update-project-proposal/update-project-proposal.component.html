@@ -1,0 +1,150 @@
+<div class="back">
+  <div class="wrap">
+    <div class="cover">
+      <h1>Измените свој пројекат</h1>
+    </div>
+
+    
+
+    <div class="company">
+      <p class="user" [routerLink]="['/projectproposal']">Корисник: <span>{{company.name}}</span></p>
+      <p class="quit" (click)="logout()">Одјави се <i class="fa fa-sign-out"></i></p>
+    </div>
+
+    <ul class="list-group subjects-list projects-list">
+      <li class="list-group-item" *ngFor="let project of projectProposals; index as i" (click)="selectProject(project.projectProposalID)">
+        {{project.name}}
+        <img src="../../assets/images/icons/delete.png" alt="delete" (click)="deleteProjectProposal(project.projectProposalID)">
+      </li>
+    </ul>
+
+    <form [formGroup] = "projectForm" (submit)="updateProjectProposal()">
+      <div class="form-group">
+        <label for="name" class="label">Назив пројекта</label>
+        <input type="text" 
+               class="input form-control"
+               formControlName="name"
+               name="name"
+               [ngClass]="{'is-invalid': projectForm.get('name').errors
+                          && projectForm.get('name').touched}"
+               placeholder="Назив пројекта">
+        <div class="invalid-feedback">Морате унети назив пројекта</div>
+      </div>
+
+      <div class="form-group area">
+        <label for="description" class="label">Опис пројекта</label>
+        <textarea type="text" 
+               class="input form-control"
+               formControlName="description"
+               name="description"
+               [ngClass]="{'is-invalid': projectForm.get('description').errors
+                          && projectForm.get('description').touched}"
+               placeholder="Опис пројекта"></textarea>>
+        <div class="invalid-feedback">Морате унети опис пројекта</div>
+      </div>
+
+      <div class="dates">
+        <label for="startDateProjectProposal" class="label for-date desktop">Жељени датум почетка рада на пројекту</label>
+        <label for="startDateProjectProposal" class="label for-date desktop">Време трајања пројекта у данима</label>
+      </div>
+      <div class="dates">
+        <div class="form-group">
+        <label for="startDateProjectProposal" class="label for-date mobile">Жељени датум почетка рада на пројекту</label>
+        <input type="text"
+                 formControlName="startDateProjectProposal"
+                 [ngClass]="{'is-invalid': projectForm.get('startDateProjectProposal').errors
+                            && projectForm.get('startDateProjectProposal').touched}"
+                 bsDatepicker [bsConfig]="bsConfig" class="form-control input date"
+                 placeholder="Датум почетка"
+                 (change)="isInvalidDate($event)"
+                 [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }">
+          <div class="invalid-feedback">Морате унети датум почетка рада</div>
+        </div>
+
+        <div class="form-group area">
+          <label for="daysDuration" class="label for-date mobile">Време трајања пројекта у данима</label>
+          <input type="text" 
+                 class="input form-control date days"
+                 formControlName="daysDuration"
+                 name="daysDuration"
+                 [ngClass]="{'is-invalid': projectForm.get('daysDuration').errors
+                            && projectForm.get('daysDuration').touched}"
+                 placeholder="Време трајања у данима">
+          <div class="invalid-feedback" *ngIf="(!projectForm.get('daysDuration').hasError('not-number') && projectForm.get('daysDuration').touched)">Морате унети време трајања пројекта</div>
+          <div class="invalid-feedback" *ngIf="(projectForm.get('daysDuration').hasError('not-number') && projectForm.get('daysDuration').touched)">Морате унети број од 1 до 92</div>
+        </div>
+      </div>
+      
+      <div class="form-group element">
+        <label for="externalMentor" class="label for-date">Изаберите ментора</label>
+        <select name="externalMentor" id="externalMentor" class="form-control input" formControlName="externalMentor">
+          <option *ngFor="let mentor of company.mentors" value="{{mentor.mentorID}}">{{mentor.name + ' ' + mentor.surname}}</option>
+        </select>
+      </div>
+            
+
+
+      <div class="covering-subjects">
+        <h2>Теме покрића пројекта</h2>
+        <div class="wrapper" >
+          
+          <form [formGroup]="coveringSubjectForm" class="subject-form">
+          <div class="form-group">
+            <label for="scientificArea" class="label for-date">Изаберите научну област</label>
+            <select name="scientificArea" id="scientificArea" class="form-control" formControlName="area">
+              <option *ngFor="let area of scientificAreas" value="{{area.scientificAreaID}}">{{area.name}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="name" class="label">Назив теме покрића</label>
+            <input type="text" 
+                   class="input form-control"
+                   formControlName="name"
+                   name="name"
+                   [ngClass]="{'is-invalid': coveringSubjectForm.get('name').errors
+                              && coveringSubjectForm.get('name').touched}"
+                   placeholder="Назив теме покрића">
+            <div class="invalid-feedback">Морате унети назив теме покрића</div>
+          </div>
+          <div class="form-group area">
+            <label for="description" class="label">Опис теме покрића</label>
+            <textarea type="text" 
+                   class="input form-control"
+                   formControlName="description"
+                   name="description"
+                   [ngClass]="{'is-invalid': coveringSubjectForm.get('description').errors
+                              && coveringSubjectForm.get('description').touched}"
+                   placeholder="Опис теме поркића"></textarea>
+            <div class="invalid-feedback">Морате унети опис теме покрића</div>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn" 
+                    [ngClass]="{'not-valid': projectForm.get('subjects').hasError('invalid-length')}"
+                    *ngIf="this.selectedSubject != null"
+                    type="button" 
+                    [disabled]="!coveringSubjectForm.valid || !coveringSubjectForm.dirty" (click)="updateSubject()">Измени тему</button>
+            <button class="btn" 
+                    [ngClass]="{'not-valid': projectForm.get('subjects').hasError('invalid-length')}"
+                    *ngIf="this.selectedSubject == null"
+                    type="button" 
+                    [disabled]="!coveringSubjectForm.valid" (click)="addSubject()">Додај тему</button>
+          </div>
+        </form>
+
+          <ul formArrayName="subjects" class="list-group subjects-list">
+            <li class="list-group-item" *ngFor="let subject of subjects.controls; index as i" (click)="selectSubject(i)">
+              {{subject.get('name').value}}
+              <img src="../../assets/images/icons/delete.png" alt="delete" (click)="deleteSubject(i)">
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-group text-center">
+        <button class="btn" type="submit" [disabled]="!projectForm.valid || !(projectForm.dirty || editedSubject)">Измените предлог пројекта</button>
+      </div>
+    </form>
+
+  </div>
+</div>

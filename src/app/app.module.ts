@@ -34,6 +34,8 @@ import { ProposedProjectsResolver } from './_resolvers/proposed-projects.resolve
 import { EmployeesResolver } from './_resolvers/employees.resolver';
 import { ProjectsResolver } from './_resolvers/projects.resolver';
 import { ApprovedProjectComponent } from './approved-project/approved-project.component';
+import { UpdateProjectProposalComponent } from './update-project-proposal/update-project-proposal.component';
+import { ProposedProjectsCompanyResolver } from './_resolvers/proposed-projects-company.resolver';
 
 
 export function tokenGetter() {
@@ -41,7 +43,7 @@ export function tokenGetter() {
 }
 
 @NgModule({
-   declarations: [						
+   declarations: [							
       AppComponent,
       HomeComponent,
       ProjectProposalComponent,
@@ -50,7 +52,8 @@ export function tokenGetter() {
       SidebarComponent,
       EmpDashboardComponent,
       ApprovingProjectComponent,
-      ApprovedProjectComponent
+      ApprovedProjectComponent,
+      UpdateProjectProposalComponent
    ],
    imports: [
       BrowserModule,
@@ -84,7 +87,8 @@ export function tokenGetter() {
       NumbersResolver,
       ProposedProjectsResolver,
       EmployeesResolver,
-      ProjectsResolver
+      ProjectsResolver,
+      ProposedProjectsCompanyResolver
    ],
    bootstrap: [
       AppComponent

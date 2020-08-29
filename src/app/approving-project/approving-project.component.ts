@@ -42,6 +42,7 @@ import { EmployeeAuthService } from '../_services/employee-auth.service';
         animate('50ms')
       ]),
       transition('edit => not-edit', [
+        
         animate('450ms')
       ])
     ])

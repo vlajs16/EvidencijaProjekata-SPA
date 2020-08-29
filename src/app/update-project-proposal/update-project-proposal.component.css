@@ -23,9 +23,6 @@
     padding-bottom: 25px;
 }
 
-.user{
-    cursor: pointer;
-}
 
 .cover{
     width: 100%;
@@ -508,6 +505,30 @@ h2{
 
 .subjects-list li img:hover{
     transform: rotate(-20deg);
+}
+
+.projects-list{
+    margin: 0 auto;
+    color: #21bced;
+    cursor: pointer;
+}
+
+.subjects-list{
+    cursor: pointer;
+}
+
+.user{
+    cursor: pointer;
+}
+
+.projects-list li:hover,
+.subjects-list li:hover{
+    background: #21bced;
+    color: rgb(0,43,81);
+}
+
+select{
+    color: #21bced!important;
 }
 
 @media(min-width: 720px){

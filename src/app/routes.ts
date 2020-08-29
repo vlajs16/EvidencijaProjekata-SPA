@@ -14,12 +14,18 @@ import { ApprovedProjectComponent } from './approved-project/approved-project.co
 import { ProjectsResolver } from './_resolvers/projects.resolver';
 import { CompanyGuard } from './_guards/company.guard';
 import { EmployeeGuard } from './_guards/employee.guard';
+import { UpdateProjectProposalComponent } from './update-project-proposal/update-project-proposal.component';
+import { ProposedProjectsCompanyResolver } from './_resolvers/proposed-projects-company.resolver';
 
 export const appRoutes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'projectproposal', component: ProjectProposalComponent,
         runGuardsAndResolvers: 'always',
         resolve: {company: CompanyProposeResolver, areas: ScientificAreaResolver},
+        canActivate: [CompanyGuard]},
+    {path: 'projectproposal/update', component: UpdateProjectProposalComponent,
+        runGuardsAndResolvers: 'always',
+        resolve: {company: CompanyProposeResolver, areas: ScientificAreaResolver, projects: ProposedProjectsCompanyResolver},
         canActivate: [CompanyGuard]},
     {path: 'employee', component: EmployeeLoginComponent},
     {path: 'dashboard', component: EmpDashboardComponent,

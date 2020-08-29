@@ -82,7 +82,7 @@ export class ProjectProposalComponent implements OnInit {
         // this.editContact[i] = false;
         this.createEditContactFormGroup();
         // console.log(this.editContact);
-        console.log("dodato");
+        // console.log("dodato");
       }
     });
 
@@ -127,13 +127,7 @@ export class ProjectProposalComponent implements OnInit {
   proposeProject(){
     if(this.projectForm.valid){
       this.projectProposal = Object.assign({}, this.projectForm.value);
-      // console.log(this.projectProposal);
       this.projectProposal.externalMentor = this.company.mentors.find(x => x.mentorID == this.projectForm.get('externalMentor').value);
-      // this.projectProposal.subjects.forEach(subj => subj.scientificArea == this.scientificAreas.find(x => x.scientificAreaID == ));
-      // for (let i = 0; i < this.subjects.length; i++) {
-      //   this.projectProposal.subjects[i].scientificArea = this.scientificAreas.find(x => x.scientificAreaID == this.subjects[i].get('scientificArea').value)
-      // }
-      // console.log(this.projectProposal);
       this.projectProposal.company = this.company;
       this.projectService.insertProjectProposal(this.projectProposal).subscribe(next => {
         this.createProjectForm();

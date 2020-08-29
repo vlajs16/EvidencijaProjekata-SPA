@@ -21,7 +21,7 @@ login(company: any){
   .pipe(
     map((response: any) => {
       const comp = response;
-      if(comp){
+      if( comp ){
         localStorage.setItem('token', comp.token);
         localStorage.setItem('company', JSON.stringify(comp.company));
         this.decodedToken = this.jwtHelper.decodeToken(comp.token);
